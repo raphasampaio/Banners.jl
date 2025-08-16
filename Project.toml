@@ -1,5 +1,5 @@
-name = "Template"
-uuid = "2e8786bb-0a6d-41ac-b652-550829977f52"
+name = "Banners"
+uuid = "9d56c6cd-6b8f-4be8-8988-f736b1e277c6"
 version = "0.1.0"
 
 [deps]

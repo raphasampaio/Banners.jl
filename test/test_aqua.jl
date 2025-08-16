@@ -1,12 +1,12 @@
 module TestAqua
 
 using Aqua
-using Template
+using Banners
 using Test
 
 @testset "Aqua" begin
-    Aqua.test_ambiguities(Template, recursive = false)
-    Aqua.test_all(Template, recursive = false)
+    Aqua.test_ambiguities(Banners, recursive = false)
+    Aqua.test_all(Banners, recursive = false)
     return nothing
 end
 
