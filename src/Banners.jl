@@ -1,20 +1,14 @@
 module Banners
 
-using FIGlet
-using StyledStrings
 using Colors
 using ColorVectorSpace
+using FIGlet
+using StyledStrings
 
-include("figlet.jl")
+export to_string, to_colored_string
 
-function string_to_matrix(s::AbstractString)
-    lines = split(s, '\n')
-    matrix = [collect(line) for line in lines]
-    return matrix
-end
-
-function matrix_to_string(matrix::Vector{Vector{<:AbstractChar}})
-    return join(map(row -> join(row), matrix), "\n")
-end
+include("colors.jl")
+include("fonts.jl")
+include("strings.jl")
 
 end
