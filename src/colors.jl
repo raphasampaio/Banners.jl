@@ -52,6 +52,24 @@ function to_colored_string(
     bottom_left::AbstractString,
     bottom_right::AbstractString,
 )
+    if isempty(text)
+        return ""
+    end
+    
+    # Validate color strings
+    try
+        parse(RGB, top_left)
+        parse(RGB, top_right)
+        parse(RGB, bottom_left)
+        parse(RGB, bottom_right)
+    catch e
+        if e isa ArgumentError
+            throw(ArgumentError("Invalid color format. Use hex format like '#FF0000' or CSS color names like 'red'."))
+        else
+            rethrow(e)
+        end
+    end
+    
     matrix = string_to_matrix(to_string(font, text))
     colored_matrix = gradient_text(matrix; top_left, top_right, bottom_left, bottom_right)
     return matrix_to_string(colored_matrix)
