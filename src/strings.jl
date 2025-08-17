@@ -4,6 +4,6 @@ function string_to_matrix(s::AbstractString)
     return matrix
 end
 
-function matrix_to_string(matrix::Vector{Vector{T}}) where {T <: AbstractChar}
+function matrix_to_string(matrix::Vector{Vector{T}}) where {T}
     return join(map(row -> join(row), matrix), "\n")
 end
