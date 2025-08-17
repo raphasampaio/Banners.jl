@@ -56,7 +56,6 @@ function to_colored_string(
         return ""
     end
 
-    # Validate color strings
     try
         parse(RGB, top_left)
         parse(RGB, top_right)

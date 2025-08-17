@@ -1,17 +1,23 @@
+module Fonts
+
+import FIGlet as FIGletRenderer
+
+export to_string, AbstractFont, FIGlet
+
 abstract type AbstractFont end
 
-struct FIGletFont <: AbstractFont
+struct FIGlet <: AbstractFont
     label::String
 end
 
-function to_string(font::FIGletFont, text::AbstractString)
+function to_string(font::FIGlet, text::AbstractString)
     if isempty(text)
         return ""
     end
 
     try
         io = IOBuffer()
-        FIGlet.render(io, text, font.label)
+        FIGletRenderer.render(io, text, font.label)
         return String(take!(io))
     catch e
         if e isa KeyError
@@ -25,4 +31,6 @@ function to_string(font::FIGletFont, text::AbstractString)
             rethrow(e)
         end
     end
+end
+
 end
