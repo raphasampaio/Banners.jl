@@ -45,7 +45,7 @@ function gradient_text(
 end
 
 function to_colored_string(
-    font::AbstractFont, 
+    font::AbstractFont,
     text::AbstractString;
     top_left::AbstractString,
     top_right::AbstractString,
@@ -55,7 +55,7 @@ function to_colored_string(
     if isempty(text)
         return ""
     end
-    
+
     # Validate color strings
     try
         parse(RGB, top_left)
@@ -69,7 +69,7 @@ function to_colored_string(
             rethrow(e)
         end
     end
-    
+
     matrix = string_to_matrix(to_string(font, text))
     colored_matrix = gradient_text(matrix; top_left, top_right, bottom_left, bottom_right)
     return matrix_to_string(colored_matrix)
