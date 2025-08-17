@@ -2,7 +2,7 @@ module Fonts
 
 import FIGlet as FIGletRenderer
 
-export to_string, AbstractFont, FIGlet
+export create_banner, AbstractFont, FIGlet
 
 abstract type AbstractFont end
 

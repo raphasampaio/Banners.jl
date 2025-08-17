@@ -44,7 +44,7 @@ function gradient_text(
     return colored_matrix
 end
 
-function to_colored_string(
+function create_gradient_banner(
     font::Fonts.AbstractFont,
     text::AbstractString;
     top_left::AbstractString,
@@ -69,7 +69,7 @@ function to_colored_string(
         end
     end
 
-    matrix = string_to_matrix(Fonts.to_string(font, text))
+    matrix = string_to_matrix(Fonts.create_banner(font, text))
     colored_matrix = gradient_text(matrix; top_left, top_right, bottom_left, bottom_right)
     return matrix_to_string(colored_matrix)
 end

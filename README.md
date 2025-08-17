@@ -22,7 +22,7 @@ julia> ] add Banners
 ```julia
 using Banners
 
-string = to_colored_string(
+string = create_gradient_banner(
     Banners.Fonts.FIGlet("DOS Rebel"),
     "Julia",
     top_left="#4063d8",

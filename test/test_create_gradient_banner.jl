@@ -4,11 +4,11 @@ using Test
 using Banners
 using StyledStrings
 
-@testset "to_colored_string" begin
+@testset "create_gradient_banner" begin
     font = Banners.Fonts.FIGlet("small")
 
     @testset "Basic gradient functionality" begin
-        result = to_colored_string(
+        result = create_gradient_banner(
             font, "Hi",
             top_left = "#FF0000", top_right = "#00FF00",
             bottom_left = "#0000FF", bottom_right = "#FFFF00",
@@ -19,7 +19,7 @@ using StyledStrings
     end
 
     @testset "Single color (same corners)" begin
-        result = to_colored_string(
+        result = create_gradient_banner(
             font, "Test",
             top_left = "#FF0000", top_right = "#FF0000",
             bottom_left = "#FF0000", bottom_right = "#FF0000",
@@ -30,7 +30,7 @@ using StyledStrings
 
     @testset "Different color formats" begin
         # Hex colors
-        result1 = to_colored_string(
+        result1 = create_gradient_banner(
             font, "A",
             top_left = "#FF0000", top_right = "#00FF00",
             bottom_left = "#0000FF", bottom_right = "#FFFF00",
@@ -39,7 +39,7 @@ using StyledStrings
 
         # CSS color names (if supported)
         try
-            result2 = to_colored_string(
+            result2 = create_gradient_banner(
                 font, "A",
                 top_left = "red", top_right = "green",
                 bottom_left = "blue", bottom_right = "yellow",
@@ -51,7 +51,7 @@ using StyledStrings
     end
 
     @testset "Empty string with colors" begin
-        result = to_colored_string(
+        result = create_gradient_banner(
             font, "",
             top_left = "#FF0000", top_right = "#00FF00",
             bottom_left = "#0000FF", bottom_right = "#FFFF00",
@@ -60,7 +60,7 @@ using StyledStrings
     end
 
     @testset "Large text gradient" begin
-        result = to_colored_string(
+        result = create_gradient_banner(
             font, "HELLO WORLD",
             top_left = "#FF0000", top_right = "#00FF00",
             bottom_left = "#0000FF", bottom_right = "#FFFF00",
@@ -71,14 +71,14 @@ using StyledStrings
 
     @testset "Color parsing edge cases" begin
         # Test invalid colors should throw errors
-        @test_throws ArgumentError to_colored_string(
+        @test_throws ArgumentError create_gradient_banner(
             font, "Test",
             top_left = "invalid", top_right = "#00FF00",
             bottom_left = "#0000FF", bottom_right = "#FFFF00",
         )
 
         # Test partially invalid colors
-        @test_throws ArgumentError to_colored_string(
+        @test_throws ArgumentError create_gradient_banner(
             font, "Test",
             top_left = "#FF0000", top_right = "badcolor",
             bottom_left = "#0000FF", bottom_right = "#FFFF00",

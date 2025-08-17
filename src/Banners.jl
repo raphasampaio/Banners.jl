@@ -10,6 +10,6 @@ using .Fonts
 include("colors.jl")
 include("strings.jl")
 
-export to_string, to_colored_string, FIGlet, AbstractFont
+export create_banner, create_gradient_banner, FIGlet, AbstractFont
 
 end
