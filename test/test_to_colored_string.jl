@@ -5,7 +5,7 @@ using Banners
 using StyledStrings
 
 @testset "to_colored_string" begin
-    font = Banners.FIGletFont("small")
+    font = Banners.Fonts.FIGlet("small")
 
     @testset "Basic gradient functionality" begin
         result = to_colored_string(

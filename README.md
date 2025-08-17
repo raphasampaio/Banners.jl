@@ -23,7 +23,7 @@ julia> ] add Banners
 using Banners
 
 string = to_colored_string(
-    Banners.FIGletFont("DOS Rebel"),
+    Banners.Fonts.FIGlet("DOS Rebel"),
     "Julia",
     top_left="#4063d8",
     top_right="#389826",

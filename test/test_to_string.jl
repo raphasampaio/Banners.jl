@@ -4,7 +4,7 @@ using Test
 using Banners
 
 @testset "to_string" begin
-    font = Banners.FIGletFont("small")
+    font = Banners.Fonts.FIGlet("small")
 
     @testset "Basic functionality" begin
         result = to_string(font, "Hi")
@@ -39,7 +39,7 @@ using Banners
         fonts = ["small", "standard", "big"]
         for font_name in fonts
             try
-                test_font = Banners.FIGletFont(font_name)
+                test_font = Banners.Fonts.FIGlet(font_name)
                 result = to_string(test_font, "Test")
                 @test isa(result, String)
             catch
