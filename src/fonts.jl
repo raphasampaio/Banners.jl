@@ -10,7 +10,7 @@ struct FIGlet <: AbstractFont
     label::String
 end
 
-function to_string(font::FIGlet, text::AbstractString)
+function create_banner(font::FIGlet, text::AbstractString)
     if isempty(text)
         return ""
     end
