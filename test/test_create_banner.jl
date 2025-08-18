@@ -3,7 +3,7 @@ module TestCreateBanner
 using Test
 using Banners
 
-@testset "create_banner" begin
+@testset "Create Banner" begin
     font = Banners.Fonts.FIGlet("small")
 
     @testset "Basic functionality" begin

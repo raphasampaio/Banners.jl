@@ -8,7 +8,7 @@ using Test
 const Face = StyledStrings.Face
 const SimpleColor = StyledStrings.SimpleColor
 
-@testset "create_gradient_banner" begin
+@testset "Create Gradient Banner" begin
     font = Banners.Fonts.FIGlet("small")
     foreground_colors = BannerColors(
         top_left = colorant"#FF0000",
