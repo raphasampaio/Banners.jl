@@ -23,12 +23,14 @@ julia> ] add Banners
 using Banners
 
 string = create_gradient_banner(
-    Banners.Fonts.FIGlet("DOS Rebel"),
-    "Julia",
+  Banners.Fonts.FIGlet("DOS Rebel"),
+  "Julia",
+  foreground_colors = BannerColors(
     top_left="#4063d8",
     top_right="#389826",
     bottom_left="#cb3c33",
     bottom_right="#9558b2",
+  ),
 )
 ```
 

@@ -86,8 +86,3 @@ function create_gradient_banner(
     colored_matrix = create_gradient_text(matrix; foreground_colors, background_colors)
     return matrix_to_string(colored_matrix)
 end
-
-# tl_color = parse(RGB, top_left)
-# tr_color = parse(RGB, top_right)
-# bl_color = parse(RGB, bottom_left)
-# br_color = parse(RGB, bottom_right)
