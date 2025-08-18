@@ -1,4 +1,4 @@
-module TestToString
+module TestCreateBanner
 
 using Test
 using Banners

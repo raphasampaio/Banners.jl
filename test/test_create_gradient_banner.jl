@@ -1,4 +1,4 @@
-module TestToColoredString
+module TestCreateGradientBanner
 
 using Banners
 using Colors
