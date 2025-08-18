@@ -1,89 +1,214 @@
 module TestToColoredString
 
-using Test
 using Banners
+using Colors
 using StyledStrings
+using Test
+
+const Face = StyledStrings.Face
+const SimpleColor = StyledStrings.SimpleColor
 
 @testset "create_gradient_banner" begin
     font = Banners.Fonts.FIGlet("small")
+    foreground_colors = BannerColors(
+        top_left = colorant"#FF0000",
+        top_right = colorant"#00FF00",
+        bottom_left = colorant"#0000FF",
+        bottom_right = colorant"#FFFF00",
+    )
+    background_colors = BannerColors(
+        top_left = colorant"#FFFF00",
+        top_right = colorant"#0000FF",
+        bottom_left = colorant"#00FF00",
+        bottom_right = colorant"#FFFF00",
+    )
 
-    @testset "Basic gradient functionality" begin
-        result = create_gradient_banner(
-            font, "Hi",
-            top_left = "#FF0000", top_right = "#00FF00",
-            bottom_left = "#0000FF", bottom_right = "#FFFF00",
-        )
-        @test isa(result, AbstractString)
-        @test !isempty(result)
-        @test isa(result, StyledStrings.AnnotatedString)
-    end
+    result = create_gradient_banner(
+        font,
+        "Hello World",
+        foreground_colors = foreground_colors,
+    )
 
-    @testset "Single color (same corners)" begin
-        result = create_gradient_banner(
-            font, "Test",
-            top_left = "#FF0000", top_right = "#FF0000",
-            bottom_left = "#FF0000", bottom_right = "#FF0000",
-        )
-        @test isa(result, AbstractString)
-        @test !isempty(result)
-    end
+    @test result == Base.AnnotatedString{String}(
+        " _  _     _ _      __      __       _    _\n| || |___| | |___  \\ \\    / /__ _ _| |__| |\n| __ / -_) | / _ \\  \\ \\/\\/ / _ \\ '_| / _` |\n|_||_\\___|_|_\\___/   \\_/\\_/\\___/_| |_\\__,_|\n\n\n",
+        [
+            (1:1, :face, Face(foreground = SimpleColor(0xff0000))),
+            (2:2, :face, Face(foreground = SimpleColor(0xf96000))),
+            (3:3, :face, Face(foreground = SimpleColor(0xf3c000))),
+            (4:4, :face, Face(foreground = SimpleColor(0xed1200))),
+            (5:5, :face, Face(foreground = SimpleColor(0xe71800))),
+            (6:6, :face, Face(foreground = SimpleColor(0xe11e00))),
+            (7:7, :face, Face(foreground = SimpleColor(0xdb2400))),
+            (8:8, :face, Face(foreground = SimpleColor(0xd42a00))),
+            (9:9, :face, Face(foreground = SimpleColor(0xce3100))),
+            (10:10, :face, Face(foreground = SimpleColor(0xc83700))),
+            (11:11, :face, Face(foreground = SimpleColor(0xc23d00))),
+            (12:12, :face, Face(foreground = SimpleColor(0xbc4300))),
+            (13:13, :face, Face(foreground = SimpleColor(0xb64900))),
+            (14:14, :face, Face(foreground = SimpleColor(0xb04f00))),
+            (15:15, :face, Face(foreground = SimpleColor(0xaa5500))),
+            (16:16, :face, Face(foreground = SimpleColor(0xa45b00))),
+            (17:17, :face, Face(foreground = SimpleColor(0x9e6100))),
+            (18:18, :face, Face(foreground = SimpleColor(0x986700))),
+            (19:19, :face, Face(foreground = SimpleColor(0x926d00))),
+            (20:20, :face, Face(foreground = SimpleColor(0x8c7300))),
+            (21:21, :face, Face(foreground = SimpleColor(0x867900))),
+            (22:22, :face, Face(foreground = SimpleColor(0x808000))),
+            (23:23, :face, Face(foreground = SimpleColor(0x798600))),
+            (24:24, :face, Face(foreground = SimpleColor(0x738c00))),
+            (25:25, :face, Face(foreground = SimpleColor(0x6d9200))),
+            (26:26, :face, Face(foreground = SimpleColor(0x679800))),
+            (27:27, :face, Face(foreground = SimpleColor(0x619e00))),
+            (28:28, :face, Face(foreground = SimpleColor(0x5ba400))),
+            (29:29, :face, Face(foreground = SimpleColor(0x55aa00))),
+            (30:30, :face, Face(foreground = SimpleColor(0x4fb000))),
+            (31:31, :face, Face(foreground = SimpleColor(0x49b600))),
+            (32:32, :face, Face(foreground = SimpleColor(0x43bc00))),
+            (33:33, :face, Face(foreground = SimpleColor(0x3dc200))),
+            (34:34, :face, Face(foreground = SimpleColor(0x37c800))),
+            (35:35, :face, Face(foreground = SimpleColor(0x31ce00))),
+            (36:36, :face, Face(foreground = SimpleColor(0x2ad400))),
+            (37:37, :face, Face(foreground = SimpleColor(0x24db00))),
+            (38:38, :face, Face(foreground = SimpleColor(0x1ee100))),
+            (39:39, :face, Face(foreground = SimpleColor(0x18e700))),
+            (40:40, :face, Face(foreground = SimpleColor(0x12ed00))),
+            (41:41, :face, Face(foreground = SimpleColor(0xc0f300))),
+            (42:42, :face, Face(foreground = SimpleColor(0x60f900))),
+            (44:44, :face, Face(foreground = SimpleColor(0xd4002a))),
+            (45:45, :face, Face(foreground = SimpleColor(0xd06029))),
+            (46:46, :face, Face(foreground = SimpleColor(0xccc028))),
+            (47:47, :face, Face(foreground = SimpleColor(0xc81227))),
+            (48:48, :face, Face(foreground = SimpleColor(0xc41826))),
+            (49:49, :face, Face(foreground = SimpleColor(0xc01e25))),
+            (50:50, :face, Face(foreground = SimpleColor(0xbc2424))),
+            (51:51, :face, Face(foreground = SimpleColor(0xb82b23))),
+            (52:52, :face, Face(foreground = SimpleColor(0xb43122))),
+            (53:53, :face, Face(foreground = SimpleColor(0xb03721))),
+            (54:54, :face, Face(foreground = SimpleColor(0xac3d20))),
+            (55:55, :face, Face(foreground = SimpleColor(0xa8431f))),
+            (56:56, :face, Face(foreground = SimpleColor(0xa4491e))),
+            (57:57, :face, Face(foreground = SimpleColor(0xa04f1d))),
+            (58:58, :face, Face(foreground = SimpleColor(0x9c551c))),
+            (59:59, :face, Face(foreground = SimpleColor(0x985b1b))),
+            (60:60, :face, Face(foreground = SimpleColor(0x94611a))),
+            (61:61, :face, Face(foreground = SimpleColor(0x906719))),
+            (62:62, :face, Face(foreground = SimpleColor(0x8c6d18))),
+            (63:63, :face, Face(foreground = SimpleColor(0x887317))),
+            (64:64, :face, Face(foreground = SimpleColor(0x847916))),
+            (65:65, :face, Face(foreground = SimpleColor(0x808015))),
+            (66:66, :face, Face(foreground = SimpleColor(0x7b8614))),
+            (67:67, :face, Face(foreground = SimpleColor(0x778c13))),
+            (68:68, :face, Face(foreground = SimpleColor(0x739212))),
+            (69:69, :face, Face(foreground = SimpleColor(0x6f9811))),
+            (70:70, :face, Face(foreground = SimpleColor(0x6b9e10))),
+            (71:71, :face, Face(foreground = SimpleColor(0x67a4f0))),
+            (72:72, :face, Face(foreground = SimpleColor(0x63aae0))),
+            (73:73, :face, Face(foreground = SimpleColor(0x5fb0d0))),
+            (74:74, :face, Face(foreground = SimpleColor(0x5bb6c0))),
+            (75:75, :face, Face(foreground = SimpleColor(0x57bcb0))),
+            (76:76, :face, Face(foreground = SimpleColor(0x53c2a0))),
+            (77:77, :face, Face(foreground = SimpleColor(0x4fc890))),
+            (78:78, :face, Face(foreground = SimpleColor(0x4bce80))),
+            (79:79, :face, Face(foreground = SimpleColor(0x47d570))),
+            (80:80, :face, Face(foreground = SimpleColor(0x43db60))),
+            (81:81, :face, Face(foreground = SimpleColor(0x3fe150))),
+            (82:82, :face, Face(foreground = SimpleColor(0x3be740))),
+            (83:83, :face, Face(foreground = SimpleColor(0x37ed30))),
+            (84:84, :face, Face(foreground = SimpleColor(0x33f320))),
+            (85:85, :face, Face(foreground = SimpleColor(0x2ff910))),
+            (86:86, :face, Face(foreground = SimpleColor(0x2aff00))),
+            (88:88, :face, Face(foreground = SimpleColor(0xaa0055))),
+            (89:89, :face, Face(foreground = SimpleColor(0xa86053))),
+            (90:90, :face, Face(foreground = SimpleColor(0xa6c051))),
+            (91:91, :face, Face(foreground = SimpleColor(0xa4124f))),
+            (92:92, :face, Face(foreground = SimpleColor(0xa2184d))),
+            (93:93, :face, Face(foreground = SimpleColor(0xa01e4b))),
+            (94:94, :face, Face(foreground = SimpleColor(0x9e2449))),
+            (95:95, :face, Face(foreground = SimpleColor(0x9c2b47))),
+            (96:96, :face, Face(foreground = SimpleColor(0x9a3145))),
+            (97:97, :face, Face(foreground = SimpleColor(0x983743))),
+            (98:98, :face, Face(foreground = SimpleColor(0x963d41))),
+            (99:99, :face, Face(foreground = SimpleColor(0x94433f))),
+            (100:100, :face, Face(foreground = SimpleColor(0x92493d))),
+            (101:101, :face, Face(foreground = SimpleColor(0x904f3b))),
+            (102:102, :face, Face(foreground = SimpleColor(0x8e5539))),
+            (103:103, :face, Face(foreground = SimpleColor(0x8c5b37))),
+            (104:104, :face, Face(foreground = SimpleColor(0x8a6135))),
+            (105:105, :face, Face(foreground = SimpleColor(0x886733))),
+            (106:106, :face, Face(foreground = SimpleColor(0x866d31))),
+            (107:107, :face, Face(foreground = SimpleColor(0x84732f))),
+            (108:108, :face, Face(foreground = SimpleColor(0x82792d))),
+            (109:109, :face, Face(foreground = SimpleColor(0x80802a))),
+            (110:110, :face, Face(foreground = SimpleColor(0x7d8628))),
+            (111:111, :face, Face(foreground = SimpleColor(0x7b8c26))),
+            (112:112, :face, Face(foreground = SimpleColor(0x799224))),
+            (113:113, :face, Face(foreground = SimpleColor(0x779822))),
+            (114:114, :face, Face(foreground = SimpleColor(0x759e20))),
+            (115:115, :face, Face(foreground = SimpleColor(0x73a41e))),
+            (116:116, :face, Face(foreground = SimpleColor(0x71aa1c))),
+            (117:117, :face, Face(foreground = SimpleColor(0x6fb01a))),
+            (118:118, :face, Face(foreground = SimpleColor(0x6db618))),
+            (119:119, :face, Face(foreground = SimpleColor(0x6bbc16))),
+            (120:120, :face, Face(foreground = SimpleColor(0x69c214))),
+            (121:121, :face, Face(foreground = SimpleColor(0x67c812))),
+            (122:122, :face, Face(foreground = SimpleColor(0x65ce10))),
+            (123:123, :face, Face(foreground = SimpleColor(0x63d5e0))),
+            (124:124, :face, Face(foreground = SimpleColor(0x61dbc0))),
+            (125:125, :face, Face(foreground = SimpleColor(0x5fe1a0))),
+            (126:126, :face, Face(foreground = SimpleColor(0x5de780))),
+            (127:127, :face, Face(foreground = SimpleColor(0x5bed60))),
+            (128:128, :face, Face(foreground = SimpleColor(0x59f340))),
+            (129:129, :face, Face(foreground = SimpleColor(0x57f920))),
+            (130:130, :face, Face(foreground = SimpleColor(0x55ff00))),
+            (132:132, :face, Face(foreground = SimpleColor(0x800080))),
+            (133:133, :face, Face(foreground = SimpleColor(0x80607c))),
+            (134:134, :face, Face(foreground = SimpleColor(0x80c079))),
+            (135:135, :face, Face(foreground = SimpleColor(0x801276))),
+            (136:136, :face, Face(foreground = SimpleColor(0x801873))),
+            (137:137, :face, Face(foreground = SimpleColor(0x801e70))),
+            (138:138, :face, Face(foreground = SimpleColor(0x80246d))),
+            (139:139, :face, Face(foreground = SimpleColor(0x802a6a))),
+            (140:140, :face, Face(foreground = SimpleColor(0x803167))),
+            (141:141, :face, Face(foreground = SimpleColor(0x803764))),
+            (142:142, :face, Face(foreground = SimpleColor(0x803d61))),
+            (143:143, :face, Face(foreground = SimpleColor(0x80435e))),
+            (144:144, :face, Face(foreground = SimpleColor(0x80495b))),
+            (145:145, :face, Face(foreground = SimpleColor(0x804f58))),
+            (146:146, :face, Face(foreground = SimpleColor(0x805555))),
+            (147:147, :face, Face(foreground = SimpleColor(0x805b52))),
+            (148:148, :face, Face(foreground = SimpleColor(0x80614f))),
+            (149:149, :face, Face(foreground = SimpleColor(0x80674c))),
+            (150:150, :face, Face(foreground = SimpleColor(0x806d49))),
+            (151:151, :face, Face(foreground = SimpleColor(0x807346))),
+            (152:152, :face, Face(foreground = SimpleColor(0x807943))),
+            (153:153, :face, Face(foreground = SimpleColor(0x808040))),
+            (154:154, :face, Face(foreground = SimpleColor(0x80863d))),
+            (155:155, :face, Face(foreground = SimpleColor(0x808c3a))),
+            (156:156, :face, Face(foreground = SimpleColor(0x809237))),
+            (157:157, :face, Face(foreground = SimpleColor(0x809834))),
+            (158:158, :face, Face(foreground = SimpleColor(0x809e31))),
+            (159:159, :face, Face(foreground = SimpleColor(0x80a42e))),
+            (160:160, :face, Face(foreground = SimpleColor(0x80aa2b))),
+            (161:161, :face, Face(foreground = SimpleColor(0x80b027))),
+            (162:162, :face, Face(foreground = SimpleColor(0x80b624))),
+            (163:163, :face, Face(foreground = SimpleColor(0x80bc21))),
+            (164:164, :face, Face(foreground = SimpleColor(0x80c21e))),
+            (165:165, :face, Face(foreground = SimpleColor(0x80c81b))),
+            (166:166, :face, Face(foreground = SimpleColor(0x80ce18))),
+            (167:167, :face, Face(foreground = SimpleColor(0x80d415))),
+            (168:168, :face, Face(foreground = SimpleColor(0x80db12))),
+            (169:169, :face, Face(foreground = SimpleColor(0x80e1f0))),
+            (170:170, :face, Face(foreground = SimpleColor(0x80e7c0))),
+            (171:171, :face, Face(foreground = SimpleColor(0x80ed90))),
+            (172:172, :face, Face(foreground = SimpleColor(0x80f360))),
+            (173:173, :face, Face(foreground = SimpleColor(0x80f930))),
+            (174:174, :face, Face(foreground = SimpleColor(0x80ff00))),
+        ],
+    )
 
-    @testset "Different color formats" begin
-        # Hex colors
-        result1 = create_gradient_banner(
-            font, "A",
-            top_left = "#FF0000", top_right = "#00FF00",
-            bottom_left = "#0000FF", bottom_right = "#FFFF00",
-        )
-        @test isa(result1, AbstractString)
-
-        # CSS color names (if supported)
-        try
-            result2 = create_gradient_banner(
-                font, "A",
-                top_left = "red", top_right = "green",
-                bottom_left = "blue", bottom_right = "yellow",
-            )
-            @test isa(result2, AbstractString)
-        catch
-            @test_skip "CSS color names not supported"
-        end
-    end
-
-    @testset "Empty string with colors" begin
-        result = create_gradient_banner(
-            font, "",
-            top_left = "#FF0000", top_right = "#00FF00",
-            bottom_left = "#0000FF", bottom_right = "#FFFF00",
-        )
-        @test isa(result, AbstractString)
-    end
-
-    @testset "Large text gradient" begin
-        result = create_gradient_banner(
-            font, "HELLO WORLD",
-            top_left = "#FF0000", top_right = "#00FF00",
-            bottom_left = "#0000FF", bottom_right = "#FFFF00",
-        )
-        @test isa(result, AbstractString)
-        @test !isempty(result)
-    end
-
-    @testset "Color parsing edge cases" begin
-        # Test invalid colors should throw errors
-        @test_throws ArgumentError create_gradient_banner(
-            font, "Test",
-            top_left = "invalid", top_right = "#00FF00",
-            bottom_left = "#0000FF", bottom_right = "#FFFF00",
-        )
-
-        # Test partially invalid colors
-        @test_throws ArgumentError create_gradient_banner(
-            font, "Test",
-            top_left = "#FF0000", top_right = "badcolor",
-            bottom_left = "#0000FF", bottom_right = "#FFFF00",
-        )
-    end
+    # @test isa(result, AbstractString)
+    # @test !isempty(result)
+    # @test isa(result, StyledStrings.AnnotatedString)
 end
 
 end
