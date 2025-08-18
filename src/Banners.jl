@@ -11,6 +11,6 @@ include("util.jl")
 include("gradient.jl")
 include("strings.jl")
 
-export create_banner, create_gradient_banner, BannerColors, FIGlet, AbstractFont
+export create_banner, create_gradient_banner, BannerColors
 
 end
