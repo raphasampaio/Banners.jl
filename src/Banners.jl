@@ -2,13 +2,15 @@ module Banners
 
 using Colors
 using ColorVectorSpace
-using FIGlet
 using StyledStrings
 
-export to_string, to_colored_string, FIGletFont
-
 include("fonts.jl")
-include("colors.jl")
+using .Fonts
+
+include("optional.jl")
+include("gradient.jl")
 include("strings.jl")
+
+export create_banner, create_gradient_banner, BannerColors
 
 end

@@ -3,7 +3,7 @@ module TestStrings
 using Test
 using Banners
 
-@testset "strings" begin
+@testset "Strings" begin
     @testset "string_to_matrix" begin
         # Test simple string
         result = Banners.string_to_matrix("ABC\nDEF")
