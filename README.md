@@ -14,7 +14,7 @@ Banners.jl is a ...
 ### Installation
 
 ```julia
-julia> ] add Banners
+pkg> add Banners
 ```
 
 ### Example
