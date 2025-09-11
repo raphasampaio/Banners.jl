@@ -30,7 +30,11 @@ const SimpleColor = StyledStrings.SimpleColor
     )
 
     @test result.string == " _  _     _ _\n| || |___| | |___\n| __ / -_) | / _ \\\n|_||_\\___|_|_\\___/\n\n\n"
-    @test result.annotations[1] == @NamedTuple{region::UnitRange{Int64}, label::Symbol, value}((1:1, :face, Face(foreground=SimpleColor(0xff0000))))
+    @test result.annotations[1] == @NamedTuple{region::UnitRange{Int64}, label::Symbol, value}((
+        1:1,
+        :face,
+        Face(foreground = SimpleColor(0xff0000)),
+    ))
 end
 
 end
