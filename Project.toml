@@ -1,5 +1,6 @@
 name = "Banners"
 uuid = "9d56c6cd-6b8f-4be8-8988-f736b1e277c6"
+authors = ["raphasampaio"]
 version = "0.1.0"
 
 [deps]
