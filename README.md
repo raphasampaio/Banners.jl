@@ -9,6 +9,8 @@
 
 Banners.jl is a ...
 
+https://patorjk.com/software/taag
+
 ## Getting Started
 
 ### Installation
